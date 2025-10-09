@@ -19,8 +19,9 @@ export default function TodoList() {
       if (!res.ok) throw new Error('Failed to fetch todos');
       const data: Todo[] = await res.json();
       setTodos(data);
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      const errorMessage = e instanceof Error ? e.message : 'Unknown error';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -41,8 +42,9 @@ export default function TodoList() {
       setNewTodo({ title: '', description: '' });
       setShowAddForm(false);
       fetchTodos(); // 목록 새로고침
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      const errorMessage = e instanceof Error ? e.message : 'Unknown error';
+      setError(errorMessage);
     }
   };
 
@@ -88,8 +90,9 @@ export default function TodoList() {
       setEditingId(null);
       setEditTodo({ title: '', description: '' });
       fetchTodos(); // 목록 새로고침
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      const errorMessage = e instanceof Error ? e.message : 'Unknown error';
+      setError(errorMessage);
     }
   };
 
