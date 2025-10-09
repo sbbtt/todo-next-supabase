@@ -98,17 +98,6 @@ export default function InteractiveTodo() {
 | 성능 | 번들 크기 큼 | 자동 최적화 |
 | 배포 | 복잡한 설정 | Vercel 원클릭 배포 |
 
-## Supabase 선택 이유
-
-### 기존 방식의 문제점
-```javascript
-// 로컬 JSON 파일 또는 간단한 상태 관리
-const todos = [
-  { id: 1, title: "할 일 1", completed: false },
-  { id: 2, title: "할 일 2", completed: true }
-];
-```
-
 ### Supabase의 장점
 
 1. 실제 데이터베이스: PostgreSQL 기반
