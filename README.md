@@ -2,6 +2,9 @@
 
 React에서 Next.js로 전환하며 배운 것들을 정리한 Todo 애플리케이션
 
+
+[Todo App - Next.js 15 + Supabase 학습 프로젝트 배포 링크](https://todo-nextjs-supabase.vercel.app/todo/list)
+
 ## 프로젝트 목표
 
 기존 React 프로젝트에서 Next.js 15로 전환하며 다음 사항들을 학습하고 비교해보기:
