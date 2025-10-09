@@ -64,8 +64,9 @@ export default function TodoList() {
       });
       
       if (!res.ok) throw new Error('Failed to update todo');
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      const errorMessage = e instanceof Error ? e.message : 'Unknown error';
+      setError(errorMessage);
       // 에러 시 원래 상태로 복원
       setTodos(prevTodos => 
         prevTodos.map(todo => 
@@ -119,8 +120,9 @@ export default function TodoList() {
       });
       
       if (!res.ok) throw new Error('Failed to delete todo');
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      const errorMessage = e instanceof Error ? e.message : 'Unknown error';
+      setError(errorMessage);
       // 에러 시 원래 상태로 복원
       setTodos(originalTodos);
     }
