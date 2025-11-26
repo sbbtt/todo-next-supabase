@@ -219,7 +219,7 @@ const toggleTodo = async (id: number, completed: boolean) => {
 
 ## 배포 방법
 
-### Vercel 배포 (추천)
+### Vercel 배포 (깃 리포지토리 설정 시 자동배포)
 ```bash
 # Vercel CLI 설치
 npm install -g vercel
@@ -228,44 +228,10 @@ npm install -g vercel
 vercel
 ```
 
-### 환경 변수 설정
-```
-NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-```
-
-## 학습 포인트
-
-### 1. 프레임워크 전환의 장점
-- 더 나은 개발자 경험
-- 내장된 최적화 기능
-- 간편한 배포 과정
-
-### 2. 현대적인 백엔드 선택
-- Supabase의 BaaS (Backend as a Service) 장점
-- 데이터베이스 관리의 복잡성 제거
-- 실시간 기능의 쉬운 구현
-
-### 3. 사용자 경험 개선
-- Optimistic Updates로 즉시 반응
-- 스마트한 상태 관리
-- 에러 처리와 복구 메커니즘
-
 ## 향후 개선 계획
 
-- 사용자 인증 시스템 추가
-- 실시간 협업 기능
-- 할 일 카테고리 및 태그
-- 마감일 및 알림 기능
+- 사용자 인증 시스템 추가 auth
+- 실시간 협업 기능 canvan
+- 할 일 카테고리 및 태그필터
 - 다크 모드 지원
 
-## 참고 자료
-
-- [Next.js 15 공식 문서](https://nextjs.org/docs)
-- [Supabase 공식 문서](https://supabase.com/docs)
-- [Tailwind CSS 문서](https://tailwindcss.com/docs)
-- [TypeScript 핸드북](https://www.typescriptlang.org/docs/)
-
----
-
-이 프로젝트는 React에서 Next.js로의 전환 과정을 학습하기 위해 만들어졌습니다. 각 기술의 장단점을 비교하고, 현대적인 웹 개발 패턴을 익히는 것이 목표입니다.
