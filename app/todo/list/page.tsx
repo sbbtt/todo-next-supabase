@@ -10,6 +10,7 @@ export default function TodoList() {
   const [newTodo, setNewTodo] = useState({ title: '', description: '' });
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editTodo, setEditTodo] = useState({ title: '', description: '' });
+  const [isAdding, setIsAdding] = useState(false);
 
   const fetchTodos = async () => {
     setLoading(true);
@@ -28,8 +29,13 @@ export default function TodoList() {
   };
 
   const addTodo = async () => {
+    
+    if(isAdding) return; // 중복 이벤트를 막기위해 상태 추가함
     if (!newTodo.title.trim()) return;
     
+    setIsAdding(true); 
+    
+
     try {
       const res = await fetch('/api/todos', {
         method: 'POST',
@@ -45,6 +51,8 @@ export default function TodoList() {
     } catch (e: unknown) {
       const errorMessage = e instanceof Error ? e.message : 'Unknown error';
       setError(errorMessage);
+    } finally {
+      setIsAdding(false);
     }
   };
 
@@ -73,7 +81,7 @@ export default function TodoList() {
           todo.id === id ? { ...todo, completed: completed } : todo
         )
       );
-    }
+    } 
   };
 
   const updateTodo = async (id: number) => {
@@ -108,7 +116,7 @@ export default function TodoList() {
   };
 
   const deleteTodo = async (id: number) => {
-    if (!confirm('정말로 이 할 일을 삭제하시겠습니까?')) return;
+    if (!confirm('Would you mind deleting this todo?')) return;
     
     // 즉시 UI에서 제거 (Optimistic Update)
     const originalTodos = todos;
@@ -199,7 +207,7 @@ export default function TodoList() {
                       type="text"
                       value={newTodo.title}
                       onChange={(e) => setNewTodo({ ...newTodo, title: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                       placeholder="Enter todo title..."
                     />
                   </div>
@@ -210,7 +218,7 @@ export default function TodoList() {
                     <textarea
                       value={newTodo.description}
                       onChange={(e) => setNewTodo({ ...newTodo, description: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                       rows={3}
                       placeholder="Enter description (optional)..."
                     />
@@ -267,7 +275,7 @@ export default function TodoList() {
                             type="text"
                             value={editTodo.title}
                             onChange={(e) => setEditTodo({ ...editTodo, title: e.target.value })}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                             placeholder="Enter todo title..."
                           />
                         </div>
@@ -278,7 +286,7 @@ export default function TodoList() {
                           <textarea
                             value={editTodo.description}
                             onChange={(e) => setEditTodo({ ...editTodo, description: e.target.value })}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                             rows={3}
                             placeholder="Enter description (optional)..."
                           />
